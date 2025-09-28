@@ -1,0 +1,20 @@
+# Copy this to .env.local and fill in your API keys
+
+# OpenAI API (Required for AI Learning Assistant)
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Database (Choose one)
+DATABASE_URL=your_database_connection_string
+
+# NextAuth (Already configured)
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# Optional APIs
+ALGOLIA_APP_ID=your_algolia_app_id
+ALGOLIA_API_KEY=your_algolia_api_key
+GITHUB_TOKEN=your_github_token
+
+# Code Execution (No keys needed)
+CODESANDBOX_API_URL=https://codesandbox.io/api/v1/sandboxes/define
+STACKBLITZ_API_URL=https://stackblitz.com/api/v1/projects

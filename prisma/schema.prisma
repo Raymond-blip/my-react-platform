@@ -1,0 +1,169 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication and progress tracking
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Progress tracking
+  progress  UserProgress[]
+  questions Question[]
+  answers   Answer[]
+  discussions Discussion[]
+  replies   Reply[]
+
+  @@map("users")
+}
+
+// Learning progress tracking
+model UserProgress {
+  id                String   @id @default(cuid())
+  userId            String
+  sectionId         String
+  completedAt       DateTime @default(now())
+  timeSpent         Int      @default(0) // in minutes
+  lastAccessed      DateTime @default(now())
+  
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, sectionId])
+  @@map("user_progress")
+}
+
+// Learning sections/content
+model Section {
+  id            String   @id @default(cuid())
+  title         String
+  content       String
+  category      String   // fundamentals, hooks, advanced, etc.
+  difficulty    String   // beginner, intermediate, advanced
+  estimatedTime Int      // in minutes
+  prerequisites String[] // array of prerequisite section IDs
+  order         Int      @default(0)
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  codeExamples  CodeExample[]
+  progress      UserProgress[]
+
+  @@map("sections")
+}
+
+// Code examples for each section
+model CodeExample {
+  id          String   @id @default(cuid())
+  sectionId   String
+  title       String
+  code        String
+  language    String   // jsx, tsx, javascript, typescript
+  description String
+  isInteractive Boolean @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  section     Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@map("code_examples")
+}
+
+// Community Questions and Answers
+model Question {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  authorId    String
+  tags        String[]
+  votes       Int      @default(0)
+  isResolved  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  answers     Answer[]
+
+  @@map("questions")
+}
+
+model Answer {
+  id          String   @id @default(cuid())
+  questionId  String
+  content     String
+  authorId    String
+  votes       Int      @default(0)
+  isAccepted  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("answers")
+}
+
+// Community Discussions
+model Discussion {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  replies   Reply[]
+
+  @@map("discussions")
+}
+
+model Reply {
+  id           String     @id @default(cuid())
+  discussionId String
+  content      String
+  authorId     String
+  createdAt    DateTime   @default(now())
+
+  discussion   Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  author       User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("replies")
+}
+
+// User achievements
+model Achievement {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  description String
+  icon        String
+  unlockedAt  DateTime @default(now())
+
+  @@map("achievements")
+}
+
+// AI Learning interactions
+model LearningInteraction {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   // explain, example, debug, quiz
+  topic     String
+  prompt    String
+  response  String
+  createdAt DateTime @default(now())
+
+  @@map("learning_interactions")
+}
