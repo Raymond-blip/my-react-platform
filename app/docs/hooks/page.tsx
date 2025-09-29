@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { BookOpen, Clock, ArrowRight, CheckCircle, PlayCircle, Zap, Code, MousePointer, List, ToggleLeft, Settings } from "lucide-react"
+import { BookOpen, Clock, ArrowRight, CheckCircle, PlayCircle, Zap, Code, MousePointer, List, ToggleLeft, Settings, Target } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 
@@ -18,7 +18,7 @@ export default function HooksPage() {
       description: "Manage component state with the useState hook",
       duration: "15 min",
       completed: false,
-      href: "/docs/hooks/useState",
+      href: "/docs/hooks/use-state",
       icon: Settings,
     },
     {
@@ -27,7 +27,7 @@ export default function HooksPage() {
       description: "Handle side effects and lifecycle events",
       duration: "20 min",
       completed: false,
-      href: "/docs/hooks/useEffect",
+      href: "/docs/hooks/use-effect",
       icon: Zap,
     },
     {
@@ -36,7 +36,7 @@ export default function HooksPage() {
       description: "Share data across components without prop drilling",
       duration: "18 min",
       completed: false,
-      href: "/docs/hooks/useContext",
+      href: "/docs/hooks/use-context",
       icon: Code,
     },
     {
@@ -45,7 +45,7 @@ export default function HooksPage() {
       description: "Manage complex state with reducers",
       duration: "25 min",
       completed: false,
-      href: "/docs/hooks/useReducer",
+      href: "/docs/hooks/use-reducer",
       icon: Settings,
     },
     {
@@ -63,7 +63,7 @@ export default function HooksPage() {
       description: "Optimize performance with memoization",
       duration: "15 min",
       completed: false,
-      href: "/docs/hooks/useMemo",
+      href: "/docs/hooks/use-memo",
       icon: Zap,
     },
     {
@@ -72,7 +72,7 @@ export default function HooksPage() {
       description: "Memoize functions to prevent unnecessary re-renders",
       duration: "12 min",
       completed: false,
-      href: "/docs/hooks/useCallback",
+      href: "/docs/hooks/use-callback",
       icon: MousePointer,
     },
     {
@@ -81,7 +81,7 @@ export default function HooksPage() {
       description: "Access DOM elements and persist values",
       duration: "20 min",
       completed: false,
-      href: "/docs/hooks/useRef",
+      href: "/docs/hooks/use-ref",
       icon: Target,
     },
   ]
