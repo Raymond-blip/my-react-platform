@@ -1,6 +1,5 @@
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+// Note: PrismaClient should only be used in server-side code
+// This file is for client-side progress API calls
 
 // Progress Tracking API
 export interface UserProgress {

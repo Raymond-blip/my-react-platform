@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Menu, X, Code, BookOpen, Bot, Users, Sparkles, User, TestTube } from "lucide-react"
+import { Menu, X, Code, BookOpen, Bot, Users, Sparkles, User } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useSession, signIn, signOut } from "next-auth/react"
 
@@ -19,7 +19,6 @@ export function Navigation() {
       { href: "/ai-builder", label: "AI Builder", icon: Bot },
       { href: "/templates", label: "Templates", icon: Sparkles },
       { href: "/community", label: "Community", icon: Users },
-      { href: "/test-library", label: "Library Test", icon: TestTube },
     ]
 
   return (

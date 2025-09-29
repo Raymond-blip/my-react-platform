@@ -86,7 +86,7 @@ export function ProgressTracker({ currentLesson, totalLessons, completedLessons,
         <CardContent>
           <div className="space-y-3">
             {lessons.map((lesson, index) => {
-              const isCompleted = isCompleted(lesson.id) || actualCompletedLessons.includes(lesson.id)
+              const completed = isCompleted(lesson.id) || actualCompletedLessons.includes(lesson.id)
               const isCurrent = currentPath.includes(lesson.id)
 
               return (
@@ -96,7 +96,7 @@ export function ProgressTracker({ currentLesson, totalLessons, completedLessons,
                     isCurrent ? "bg-primary/10 border border-primary/20" : ""
                   }`}
                 >
-                  {isCompleted ? (
+                  {completed ? (
                     <CheckCircle className="h-5 w-5 text-green-500" />
                   ) : isCurrent ? (
                     <Clock className="h-5 w-5 text-primary" />

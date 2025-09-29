@@ -7,7 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Code, Bot, Users, Sparkles, Play, BookOpen, Zap, Trophy } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { useProgress } from "@/lib/hooks/useProgress"
 export default function HomePage() {
+  const { stats, progress: userProgress, loading } = useProgress()
   const features = [
     {
       icon: BookOpen,
@@ -47,7 +49,10 @@ export default function HomePage() {
     },
   ]
 
-  const progress = 65 // percent
+  const totalSections = stats?.totalSections ?? 36
+  const completedSections = userProgress?.completedSections?.length ?? 0
+  const computed = stats?.completionPercentage ?? Math.round((completedSections / totalSections) * 100)
+  const progress = loading ? 0 : Math.min(100, computed)
 
   return (
     <div className="min-h-screen bg-background">

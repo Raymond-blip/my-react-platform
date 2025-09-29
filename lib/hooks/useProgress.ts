@@ -79,6 +79,17 @@ export function useProgress() {
     }
   }, [status, loadProgress])
 
+  // Real-time progress updates - poll every 30 seconds
+  useEffect(() => {
+    if (status === "authenticated" && userId !== "anonymous") {
+      const interval = setInterval(() => {
+        loadProgress()
+      }, 30000) // 30 seconds
+
+      return () => clearInterval(interval)
+    }
+  }, [status, userId, loadProgress])
+
   return {
     progress,
     stats,
