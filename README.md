@@ -19,6 +19,57 @@ Tech Stack
 - Prisma ORM (optional), PostgreSQL (e.g., Supabase)
 - Vitest + Testing Library (included in repo)
 
+App Overview
+------------
+- `app/`
+  - `page.tsx` – Landing page with hero, feature grid, and live progress
+  - `dashboard/page.tsx` – Personalized dashboard (progress, achievements)
+  - `docs/` – Learning curriculum
+    - `fundamentals/`
+      - `intro`, `first-component`, `jsx`, `props-state`, `events`, `conditional`, `lists`, `forms`
+    - `hooks/`, `advanced/`, `testing/` – section landing pages
+  - `playground/page.tsx` – Live code runner/editor
+  - `ai-builder/page.tsx` – AI component builder
+  - `templates/*`, `community/*` – templates and forum
+  - `api/`
+    - `auth/[...nextauth]` – GitHub auth
+    - `progress` – GET/POST progress
+    - `progress/stats` – overall stats
+    - `progress/section` – section progress
+- `components/` – UI and app components (navigation, progress tracker, etc.)
+- `lib/` – client APIs/hooks (`useProgress`, `progress-api`)
+- `prisma/` – `schema.prisma`, optional seed
+
+Docs Map (Beginner Track)
+-------------------------
+- Fundamentals
+  - Introduction to React
+  - Your First Component
+  - Understanding JSX
+  - Props and State
+  - Event Handling
+  - Conditional Rendering
+  - Lists and Keys
+  - Forms
+
+API Endpoints
+-------------
+- `GET /api/progress?userId=...` → overall progress object
+- `POST /api/progress` → { userId, sectionId, timeSpent }
+- `GET /api/progress/stats?userId=...` → totals, percentage, streak
+- `GET /api/progress/section?userId=...&sectionId=...` → section state
+
+Environment Variables
+---------------------
+Required for auth (GitHub OAuth):
+- `GITHUB_ID`
+- `GITHUB_SECRET`
+- `NEXTAUTH_SECRET`
+- `NEXTAUTH_URL` (e.g., http://localhost:3000)
+
+Optional for persistence (PostgreSQL):
+- `DATABASE_URL` → must start with `postgresql://` or `postgres://` (add `?sslmode=require` for hosted DBs)
+
 Quick Start
 ----------
 1) Install dependencies
@@ -64,6 +115,19 @@ Progress Tracking
   2. Generate Prisma client: `npx prisma generate`.
   3. Apply migrations (if present) or create tables accordingly.
 
+Deployment
+----------
+- Vercel (recommended):
+  1. Import repo
+  2. Add env vars (GitHub OAuth + optional DB)
+  3. Deploy
+
+Troubleshooting
+---------------
+- Prisma datasource error: `the URL must start with postgresql:// or postgres://` → fix `DATABASE_URL` prefix
+- Windows lock on Prisma client: stop dev server / Node processes, then `npx prisma generate`
+- Port 3000 in use: stop existing dev server or change port (package.json `dev` script)
+
 Scripts
 -------
 ```bash
@@ -86,6 +150,10 @@ Project Structure (high level)
 - `components/` – UI components (shadcn/ui) and app components
 - `lib/` – APIs, utilities, hooks (incl. progress hooks)
 - `prisma/` – Prisma schema and seed (optional)
+
+Screenshots (optional)
+----------------------
+Add screenshots/gifs here (landing, dashboard, docs lesson, playground, AI builder).
 
 Development Notes
 -----------------
