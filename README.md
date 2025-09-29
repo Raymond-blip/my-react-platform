@@ -1,5 +1,29 @@
-React Learning Platform
-=======================
+<div align="center">
+
+  <img src="public/placeholder-logo.svg" alt="React Learning Platform" height="80" />
+
+  <h1>React Learning Platform</h1>
+
+  <p>
+    Learn React with interactive lessons, a live playground, and real-time progress tracking.
+  </p>
+
+  <p>
+    <a href="https://vercel.com/raymond-blips-projects/v0-react-learning-platform"><img alt="Deployed on Vercel" src="https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel" /></a>
+    <a href="https://v0.app/chat/projects/jizerE6uuFi"><img alt="Built with v0" src="https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge" /></a>
+  </p>
+
+  <p>
+    <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000?logo=next.js&logoColor=fff&style=flat" />
+    <img alt="React" src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB&style=flat" />
+    <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=flat" />
+    <img alt="Tailwind" src="https://img.shields.io/badge/Tailwind-38BDF8?logo=tailwindcss&logoColor=fff&style=flat" />
+    <img alt="shadcn/ui" src="https://img.shields.io/badge/shadcn%2Fui-111?logo=radix-ui&logoColor=fff&style=flat" />
+    <img alt="NextAuth" src="https://img.shields.io/badge/NextAuth-000?logo=auth0&logoColor=fff&style=flat" />
+    <img alt="Prisma" src="https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=fff&style=flat" />
+  </p>
+
+</div>
 
 An interactive React learning platform built with Next.js 15, TypeScript, shadcn/ui, and NextAuth (GitHub-only). It includes a docs curriculum for beginners, a live playground, AI tools, templates, a community section, and per-user learning progress tracking (with optional PostgreSQL/Prisma backend).
 
@@ -153,7 +177,28 @@ Project Structure (high level)
 
 Screenshots (optional)
 ----------------------
-Add screenshots/gifs here (landing, dashboard, docs lesson, playground, AI builder).
+<table>
+  <tr>
+    <td align="center">
+      <img src="public/placeholder.jpg" alt="Landing" width="420" />
+      <div><strong>Landing Page</strong></div>
+    </td>
+    <td align="center">
+      <img src="public/placeholder-user.jpg" alt="Dashboard" width="420" />
+      <div><strong>Dashboard</strong></div>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="public/placeholder.svg" alt="Docs" width="420" />
+      <div><strong>Docs Lesson</strong></div>
+    </td>
+    <td align="center">
+      <img src="public/placeholder-logo.png" alt="Playground" width="420" />
+      <div><strong>Playground</strong></div>
+    </td>
+  </tr>
+</table>
 
 Development Notes
 -----------------
